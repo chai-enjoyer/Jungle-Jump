@@ -5,9 +5,13 @@ extends CharacterBody2D
 @export var run_speed := 150
 @export var jump_speed := -300
 
+signal life_changed
+signal died
+
 enum { IDLE, RUN, JUMP, HURT, DEAD }
 
 var state := IDLE
+var life := 3: set = set_life
 
 func _ready() -> void:
 	change_state(IDLE)
@@ -23,8 +27,15 @@ func _physics_process(delta: float) -> void:
 
 func reset(_position) -> void:
 	position = _position
+	life = 3
 	show()
 	change_state(IDLE)
+
+func set_life(value) -> void:
+	life = value
+	life_changed.emit(life)
+	if life <= 0:
+		change_state(DEAD)
 
 func change_state(new_state) -> void:
 	state = new_state
@@ -35,9 +46,15 @@ func change_state(new_state) -> void:
 			$AnimationPlayer.play("run")
 		HURT:
 			$AnimationPlayer.play("hurt")
+			velocity.y = -200
+			velocity.x = -100 * sign(velocity.x)
+			life -= 1
+			await get_tree().create_timer(0.5).timeout
+			change_state(IDLE)
 		JUMP:
 			$AnimationPlayer.play("jump_up")
 		DEAD:
+			died.emit()
 			hide()
 
 
@@ -71,3 +88,11 @@ func get_input() -> void:
 	#Transition to JUMP when in air
 	if state in [IDLE, RUN] and !is_on_floor():
 		change_state(JUMP)
+	
+	#Don't allow movement while in a HURT state
+	if state == HURT:
+		return
+
+func hurt() -> void:
+	if state != HURT:
+		change_state(HURT)
