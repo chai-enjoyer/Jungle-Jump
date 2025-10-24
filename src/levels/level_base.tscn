@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://o83mitmxfplj"]
+[gd_scene load_steps=8 format=3 uid="uid://o83mitmxfplj"]
 
 [ext_resource type="Script" uid="uid://bm3tk2kv3mpo8" path="res://src/levels/level_base.gd" id="1_il6du"]
 [ext_resource type="TileSet" uid="uid://dhxw3f8l2saqn" path="res://assets/tilesets/tiles_world.tres" id="2_eiufa"]
+[ext_resource type="Texture2D" uid="uid://50io455eskre" path="res://assets/environment/back.png" id="2_t2oyi"]
+[ext_resource type="Texture2D" uid="uid://b33vv5523s2t2" path="res://assets/environment/middle.png" id="3_a7c0q"]
 [ext_resource type="TileSet" uid="uid://dn505hopwb4de" path="res://assets/tilesets/tiles_items.tres" id="3_t2oyi"]
 [ext_resource type="TileSet" uid="uid://blhd0ogpuydej" path="res://assets/tilesets/tiles_spikes.tres" id="4_a7c0q"]
 [ext_resource type="PackedScene" uid="uid://3lh173v4jevl" path="res://src/player/player.tscn" id="5_irtts"]
@@ -9,13 +11,35 @@
 [node name="LevelBase" type="Node2D"]
 script = ExtResource("1_il6du")
 
+[node name="Back" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 1)
+scroll_offset = Vector2(-192, 0)
+repeat_size = Vector2(768, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Back"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_t2oyi")
+centered = false
+
+[node name="Front" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 1)
+repeat_size = Vector2(880, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Front"]
+texture_repeat = 3
+position = Vector2(-21, 195)
+texture = ExtResource("3_a7c0q")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 880, 368)
+
 [node name="World" type="TileMapLayer" parent="."]
 tile_set = ExtResource("2_eiufa")
 
 [node name="Items" type="TileMapLayer" parent="."]
 tile_set = ExtResource("3_t2oyi")
 
-[node name="Danger" type="TileMapLayer" parent="."]
+[node name="Danger" type="TileMapLayer" parent="." groups=["danger"]]
 tile_set = ExtResource("4_a7c0q")
 
 [node name="Player" parent="." instance=ExtResource("5_irtts")]

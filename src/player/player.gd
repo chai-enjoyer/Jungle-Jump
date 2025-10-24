@@ -92,6 +92,11 @@ func get_input() -> void:
 	#Don't allow movement while in a HURT state
 	if state == HURT:
 		return
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider().is_in_group("danger"):
+			hurt()
 
 func hurt() -> void:
 	if state != HURT:
