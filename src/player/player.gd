@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var gravity := 750
 @export var run_speed := 150
 @export var jump_speed := -300
+@export var life := 5: set = set_life
 
 signal life_changed
 signal died
@@ -11,7 +12,7 @@ signal died
 enum { IDLE, RUN, JUMP, HURT, DEAD }
 
 var state := IDLE
-var life := 3: set = set_life
+
 
 func _ready() -> void:
 	change_state(IDLE)
@@ -24,10 +25,21 @@ func _physics_process(delta: float) -> void:
 		change_state(IDLE)
 	if state == JUMP and velocity.y > 0:
 		$AnimationPlayer.play("jump_down")
+	
+	for i in get_slide_collision_count():
+		var collision = get_slide_collision(i)
+		if collision.get_collider().is_in_group("danger"):
+			hurt()
+		if collision.get_collider().is_in_group("enemies"):
+			if position.y < collision.get_collider().position.y:
+				collision.get_collider().take_damage()
+				velocity.y = -200
+			else:
+				hurt()
 
 func reset(_position) -> void:
 	position = _position
-	life = 3
+	life = 5
 	show()
 	change_state(IDLE)
 

@@ -1,0 +1,265 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxre2nm6igphg"]
+
+[ext_resource type="Script" uid="uid://cwnbhswmformw" path="res://src/ui/hud.gd" id="1_snmo6"]
+[ext_resource type="FontFile" uid="uid://di76g6juxxu66" path="res://assets/Kenney Thick.ttf" id="2_i4jpw"]
+[ext_resource type="Texture2D" uid="uid://docs5g64w1814" path="res://assets/container.png" id="3_i4jpw"]
+[ext_resource type="Texture2D" uid="uid://cy4ciet571orl" path="res://assets/full.png" id="3_r2cn7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0isw4"]
+font = ExtResource("2_i4jpw")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_i4jpw"]
+resource_name = "click"
+length = 1.4
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/LifeCounter/L1/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/LifeCounter/L2/TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.20000002, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/LifeCounter/L3/TextureRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.30000004, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer/LifeCounter/L4/TextureRect:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.5, 0.6, 0.70000005),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HBoxContainer/LifeCounter/L5/TextureRect:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7000001, 0.8, 0.90000004),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_r2cn7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HBoxContainer/LifeCounter/L1/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1.2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HBoxContainer/LifeCounter/L2/TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1.2)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HBoxContainer/LifeCounter/L3/TextureRect:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1.2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HBoxContainer/LifeCounter/L4/TextureRect:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1.2)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HBoxContainer/LifeCounter/L5/TextureRect:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0isw4"]
+_data = {
+&"RESET": SubResource("Animation_r2cn7"),
+&"click": SubResource("Animation_i4jpw")
+}
+
+[node name="HUD" type="MarginContainer"]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+script = ExtResource("1_snmo6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+label_settings = SubResource("LabelSettings_0isw4")
+
+[node name="LifeCounter" type="HBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="L1" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("3_i4jpw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/LifeCounter/L1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(27, 25)
+texture = ExtResource("3_r2cn7")
+stretch_mode = 5
+
+[node name="L2" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("3_i4jpw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/LifeCounter/L2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(27, 25)
+texture = ExtResource("3_r2cn7")
+stretch_mode = 5
+
+[node name="L3" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("3_i4jpw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/LifeCounter/L3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(27, 25)
+texture = ExtResource("3_r2cn7")
+stretch_mode = 5
+
+[node name="L4" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("3_i4jpw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/LifeCounter/L4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(27, 25)
+texture = ExtResource("3_r2cn7")
+stretch_mode = 5
+
+[node name="L5" type="TextureRect" parent="HBoxContainer/LifeCounter"]
+layout_mode = 2
+texture = ExtResource("3_i4jpw")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/LifeCounter/L5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(27, 25)
+texture = ExtResource("3_r2cn7")
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0isw4")
+}
+autoplay = "click"
