@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://ba1jr3d1iefbo"]
+
+[ext_resource type="Texture2D" uid="uid://50io455eskre" path="res://assets/environment/back.png" id="1_iootq"]
+[ext_resource type="Texture2D" uid="uid://b33vv5523s2t2" path="res://assets/environment/middle.png" id="2_1f5qa"]
+[ext_resource type="FontFile" uid="uid://di76g6juxxu66" path="res://assets/Kenney Thick.ttf" id="3_6j74c"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tbk0m"]
+font = ExtResource("3_6j74c")
+font_size = 72
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x3r5j"]
+font = ExtResource("3_6j74c")
+font_size = 48
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_iootq")
+stretch_mode = 6
+
+[node name="Middle" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -368.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("2_1f5qa")
+stretch_mode = 1
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "JUNGLE JUMP"
+label_settings = SubResource("LabelSettings_tbk0m")
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -417.0
+offset_top = -88.0
+offset_right = 417.0
+offset_bottom = -34.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Space to Play"
+label_settings = SubResource("LabelSettings_x3r5j")
+horizontal_alignment = 1
